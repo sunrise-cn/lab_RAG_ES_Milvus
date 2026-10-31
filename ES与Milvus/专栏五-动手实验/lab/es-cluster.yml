@@ -1,0 +1,41 @@
+name: lab_rag_es_milvus_cluster
+
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.4
+    container_name: cluster-es01
+    environment:
+      - node.name=es01
+      - cluster.name=es-lab-cluster
+      - discovery.seed_hosts=es01,es02,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9210:9200"
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.4
+    container_name: cluster-es02
+    environment:
+      - node.name=es02
+      - cluster.name=es-lab-cluster
+      - discovery.seed_hosts=es01,es02,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9211:9200"
+
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.4
+    container_name: cluster-es03
+    environment:
+      - node.name=es03
+      - cluster.name=es-lab-cluster
+      - discovery.seed_hosts=es01,es02,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9212:9200"

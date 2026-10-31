@@ -1,0 +1,9 @@
+# 基础依赖：实验 01~16
+# 安装：python -m venv .venv && source .venv/Scripts/activate && pip install -r requirements.txt
+elasticsearch==8.12.1
+pymilvus==2.4.4
+numpy==1.26.4
+matplotlib>=3.8
+
+# 实验 17（混合检索合龙）额外安装，会带 PyTorch CPU 版（约几百 MB），只做实验 17 才需要：
+# pip install "sentence-transformers>=2.7"

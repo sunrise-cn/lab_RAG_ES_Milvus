@@ -1,0 +1,61 @@
+### 1. _cluster/health
+{
+  "cluster_name" : "es-lab",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 28,
+  "active_shards" : 28,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
+}
+
+### 2. _cat/indices?v
+health status index      uuid                   pri rep docs.count docs.deleted store.size pri.store.size dataset.size
+green  open   demo_index MEImdVipQFyt_StGRyuWEA   1   0         50            0     15.4kb         15.4kb       15.4kb
+
+### 3. _cat/shards?v
+index                                                          shard prirep state   docs   store dataset ip         node
+.apm-agent-configuration                                       0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.kibana_analytics_8.11.4_001                                   0     p      STARTED    5   2.3mb   2.3mb 172.25.0.4 1447d734368d
+.internal.alerts-observability.threshold.alerts-default-000001 0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.transform-notifications-000002                                0     p      STARTED   90  76.3kb  76.3kb 172.25.0.4 1447d734368d
+.internal.alerts-ml.anomaly-detection.alerts-default-000001    0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.slo-observability.summary-v2.temp                             0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.internal.alerts-observability.logs.alerts-default-000001      0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.ds-ilm-history-5-2026.10.31-000001                            0     p      STARTED   30  30.4kb  30.4kb 172.25.0.4 1447d734368d
+.internal.alerts-stack.alerts-default-000001                   0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+demo_index                                                     0     p      STARTED   50  15.4kb  15.4kb 172.25.0.4 1447d734368d
+.kibana_task_manager_8.11.4_001                                0     p      STARTED   23   162kb   162kb 172.25.0.4 1447d734368d
+.kibana_security_solution_8.11.4_001                           0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.kibana-observability-ai-assistant-conversations-000001        0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.kibana_alerting_cases_8.11.4_001                              0     p      STARTED    1   6.7kb   6.7kb 172.25.0.4 1447d734368d
+.internal.alerts-observability.apm.alerts-default-000001       0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.internal.alerts-observability.uptime.alerts-default-000001    0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.apm-source-map                                                0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.kibana_8.11.4_001                                             0     p      STARTED   21  55.9kb  55.9kb 172.25.0.4 1447d734368d
+.kibana-observability-ai-assistant-kb-000001                   0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.slo-observability.summary-v2                                  0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.internal.alerts-observability.metrics.alerts-default-000001   0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.transform-internal-007                                        0     p      STARTED   30 160.1kb 160.1kb 172.25.0.4 1447d734368d
+.kibana_ingest_8.11.4_001                                      0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.slo-observability.sli-v2                                      0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.apm-custom-link                                               0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.internal.alerts-security.alerts-default-000001                0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.internal.alerts-observability.slo.alerts-default-000001       0     p      STARTED    0    249b    249b 172.25.0.4 1447d734368d
+.ds-.kibana-event-log-ds-2026.10.31-000001                     0     p      STARTED    1   6.2kb   6.2kb 172.25.0.4 1447d734368d
+
+### 4. _cat/segments?v
+index      shard prirep ip         segment generation docs.count docs.deleted   size size.memory committed searchable version compound
+demo_index 0     p      172.25.0.4 _0               0         50            0 15.2kb           0 false     true       9.8.0   true
+
+### 5. _cat/nodes?v
+ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role   master name
+172.25.0.4           65          93   2    0.05    0.10     0.15 cdfhilmrstw *      1447d734368d

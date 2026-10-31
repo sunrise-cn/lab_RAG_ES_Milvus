@@ -1,0 +1,155 @@
+### 1. match title=蓝牙耳机
+{
+    "took": 21,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 21,
+            "relation": "eq"
+        },
+        "max_score": 8.787339,
+        "hits": [
+            {
+                "_index": "demo_index",
+                "_id": "1002",
+                "_score": 8.787339,
+                "_source": {
+                    "title": "\u4e3b\u52a8\u964d\u566a\u84dd\u7259\u8033\u673a",
+                    "category": "\u8033\u673a"
+                }
+            },
+            {
+                "_index": "demo_index",
+                "_id": "1008",
+                "_score": 3.2297235,
+                "_source": {
+                    "title": "\u6709\u7ebf\u5165\u8033\u5f0f\u8033\u673a",
+                    "category": "\u8033\u673a"
+                }
+            },
+            {
+                "_index": "demo_index",
+                "_id": "1014",
+                "_score": 2.7347388,
+                "_source": {
+                    "title": "\u8033\u673a\u4ea7\u54c1 1014 \u578b",
+
+### 2. term category=手机
+{
+    "took": 1,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 9,
+            "relation": "eq"
+        },
+        "max_score": 1.7740598,
+        "hits": [
+            {
+                "_index": "demo_index",
+                "_id": "1001",
+                "_score": 1.7740598,
+                "_source": {
+                    "title": "\u65d7\u8230\u667a\u80fd\u624b\u673a Pro Max",
+                    "category": "\u624b\u673a"
+                }
+            },
+            {
+                "_index": "demo_index",
+                "_id": "1003",
+                "_score": 1.7740598,
+                "_source": {
+                    "title": "\u6298\u53e0\u5c4f\u624b\u673a",
+                    "category": "\u624b\u673a"
+                }
+            }
+        ]
+
+### 3. bool must+filter
+{
+    "took": 7,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 1,
+            "relation": "eq"
+        },
+        "max_score": 0.40045112,
+        "hits": [
+            {
+                "_index": "demo_index",
+                "_id": "1001",
+                "_score": 0.40045112,
+                "_source": {
+                    "title": "\u65d7\u8230\u667a\u80fd\u624b\u673a Pro Max",
+                    "price": 6999.0
+                }
+            }
+        ]
+    }
+}
+
+### 4. sort+分页+_source过滤
+{
+    "took": 2,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 51,
+            "relation": "eq"
+        },
+        "max_score": null,
+        "hits": [
+            {
+                "_index": "demo_index",
+                "_id": "1004",
+                "_score": null,
+                "_source": {
+                    "title": "\u9ad8\u900f\u94a2\u5316\u819c",
+                    "price": 19.9
+                },
+                "sort": [
+                    19.9
+                ]
+            },
+            {
+                "_index": "demo_index",
+                "_id": "1032",
+                "_score": null,
+                "_source": {
+                    "title": "\u8033\u673a\u4ea7\u54c1 1032 \u578b",
+                    "price": 39.37
+                },
+                "sort": [
+                    39.37
+                ]
+            },
+
+### 5. _count
+{"count":51,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
+### 6. _analyze standard 蓝牙降噪耳机
+{"tokens":[{"token":"蓝","start_offset":0,"end_offset":1,"type":"<IDEOGRAPHIC>","position":0},{"token":"牙","start_offset":1,"end_offset":2,"type":"<IDEOGRAPHIC>","position":1},{"token":"降","start_offset":2,"end_offset":3,"type":"<IDEOGRAPHIC>","position":2},{"token":"噪","start_offset":3,"end_offset":4,"type":"<IDEOGRAPHIC>","position":3},{"token":"耳","start_offset":4,"end_offset":5,"type":"<IDEOGRAPHIC>","position":4},{"token":"机","start_offset":5,"end_offset":6,"type":"<IDEOGRAPHIC>","position":5}]}

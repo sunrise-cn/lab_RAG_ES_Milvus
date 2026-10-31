@@ -1,0 +1,81 @@
+### 1. GET demo_index（mapping+settings）
+{
+  "demo_index" : {
+    "aliases" : { },
+    "mappings" : {
+      "properties" : {
+        "category" : {
+          "type" : "keyword"
+        },
+        "content" : {
+          "type" : "text"
+        },
+        "created_at" : {
+          "type" : "date",
+          "format" : "yyyy-MM-dd"
+        },
+        "id" : {
+          "type" : "long"
+        },
+        "price" : {
+          "type" : "float"
+        },
+        "title" : {
+          "type" : "text"
+        }
+      }
+    },
+    "settings" : {
+      "index" : {
+        "routing" : {
+          "allocation" : {
+            "include" : {
+              "_tier_preference" : "data_content"
+            }
+          }
+        },
+        "number_of_shards" : "1",
+        "provided_name" : "demo_index",
+        "creation_date" : "1793445210939",
+        "number_of_replicas" : "0",
+        "uuid" : "MEImdVipQFyt_StGRyuWEA",
+        "version" : {
+          "created" : "8500003"
+        }
+      }
+    }
+  }
+}
+
+### 2. PUT demo_index2
+{"acknowledged":true,"shards_acknowledged":true,"index":"demo_index2"}
+### 3. PUT demo_index（已存在）
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "resource_already_exists_exception",
+        "reason" : "index [demo_index/MEImdVipQFyt_StGRyuWEA] already exists",
+        "index_uuid" : "MEImdVipQFyt_StGRyuWEA",
+        "index" : "demo_index"
+      }
+    ],
+    "type" : "resource_already_exists_exception",
+    "reason" : "index [demo_index/MEImdVipQFyt_StGRyuWEA] already exists",
+    "index_uuid" : "MEImdVipQFyt_StGRyuWEA",
+    "index" : "demo_index"
+  },
+  "status" : 400
+}
+
+### 4. HEAD demo_index2
+HTTP/1.1 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+
+### 5. POST demo_index2/_refresh
+{"_shards":{"total":1,"successful":1,"failed":0}}
+### 6. DELETE demo_index2
+{"acknowledged":true}
+### 7. GET demo_index2（已删）
+{"error":{"root_cause":[{"type":"index_not_found_exception","reason":"no such index [demo_index2]","resource.type":"index_or_alias","resource.id":"demo_index2","index_uuid":"_na_","index":"demo_index2"}],"type":"index_not_found_exception","reason":"no such index [demo_index2]","resource.type":"index_or_alias","resource.id":"demo_index2","index_uuid":"_na_","index":"demo_index2"},"status":404}
